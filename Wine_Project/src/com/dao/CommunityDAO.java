@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.vo.CommVo;
+import com.vo.cReplyVO;
 
 public class CommunityDAO {
 	Connection conn = null;
@@ -74,7 +75,7 @@ public class CommunityDAO {
 	}
 	
 	
-	//�Խñ� Ŭ���ϸ� ��ȸ�� ����
+	//게시판 조회수 증가
 	public int Ccount(int c_id) {
 		try {
 			getConn();
@@ -89,7 +90,7 @@ public class CommunityDAO {
 		}
 		return cnt;
 	}
-	//�Խ��� ��� ���
+	//게시글 댓글 등록
 	public int creply(String id, String r_text) {
 		try {
 			getConn();
@@ -106,7 +107,7 @@ public class CommunityDAO {
 		return cnt;
 
 	}
-	//��ǰ ����Ʈ ����
+	//게시글 가져오기
 	public ArrayList<CommVo> commSelect() {
 		CommVo vo = null; // ��ü ����
 		ArrayList<CommVo> arr = new ArrayList<>();
@@ -130,7 +131,6 @@ public class CommunityDAO {
 				int c_count = rs.getInt(6);
 				String c_date = rs.getString(7);
 
-				// VO(DTO) : ��Ⳣ�� �����͸� ��/������ �� ����ϴ� ���ο� ������ Ÿ��
 
 				vo = new CommVo(c_id, title, id, c_text, c_img, c_count, c_date);
 				System.out.println(title+id+c_date+c_count);				
@@ -145,12 +145,12 @@ public class CommunityDAO {
 		return arr;
 	}
 	
-	//Ŀ�´�Ƽ �󼼺���
+	//게시글 상세보기
 		public ArrayList<CommVo> CommInfo(int c_id) {
 			CommVo vo = null; // ㅇ??
 			ArrayList<CommVo> arr = new ArrayList<>();
 			
-			System.out.println("Ŀ�´�Ƽ �󼼺��� �Լ� ȣ��");
+			System.out.println("게시글 상세보기");
 			try {
 				getConn();
 
@@ -181,6 +181,40 @@ public class CommunityDAO {
 			}
 			return arr;
 		}
-	
+	//댓글 보기
+		public ArrayList<cReplyVO> rcommShow(int c_id) {
+			cReplyVO vo = null; // 
+			ArrayList<cReplyVO> arr = new ArrayList<>();
+			System.out.println("게시글 댓글 함수 호출");
+			try {
+				getConn();
+
+				// ---------------------------------------------------------------
+
+				String sql = "select * from c_reply where c_id=? ";
+
+
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, c_id); //session���� �޾ƿ;���
+				rs = psmt.executeQuery();
+
+				if(rs.next()) {
+					int rc_id = rs.getInt(1);
+					String id = rs.getString(2);
+					c_id = rs.getInt(3);
+					String rc_text = rs.getString(4);
+					String rc_date = rs.getString(5);
+					vo = new cReplyVO(rc_id, id, c_id, rc_text, rc_date);
+					System.out.println(rc_id+ id+ c_id+ rc_text+ rc_date);				
+					arr.add(vo);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			return arr;
+		}
 
 }

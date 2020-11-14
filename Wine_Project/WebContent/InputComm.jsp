@@ -53,7 +53,7 @@
 					<div id="respond" class="comment-respond">
 						<h3 id="reply-title" class="comment-reply-title">글 작성하기 <small><a rel="nofollow" id="cancel-comment-reply-link" href="/demo-moschino/embed-audio/#respond" style="display:none;">Cancel reply</a></small></h3>
 						
-						<form action="CommunityService" method="post" id="commentform" class="comment-form" enctype="multipart/form-data"><!-- 사진전송할 땐 enctype="multipart/form-data"-->
+						<form action="CommService" method="post" id="commentform" class="comment-form" enctype="multipart/form-data"><!-- 사진전송할 땐 enctype="multipart/form-data"-->
 							<p class="comment-form-comment">
 								<input type="hidden" name="id" value=<%=id %> id="comment_post_ID">
 								<input type="text"  class="input-field" name = "title" placeholder="제목" required>

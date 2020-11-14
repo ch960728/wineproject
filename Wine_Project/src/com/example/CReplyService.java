@@ -23,7 +23,12 @@ public class CReplyService extends HttpServlet {
 		System.out.println("creply"+creply);
 		
 		CommunityDAO dao = new CommunityDAO();
-		dao.creply(id, creply);
+		int cnt = dao.creply(id, creply);
+		
+		if (cnt > 0) {
+			
+			response.sendRedirect("Login.jsp");
+		}
 		
 	}
 
