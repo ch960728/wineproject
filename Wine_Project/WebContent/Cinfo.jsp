@@ -1,8 +1,9 @@
 <%@page import="javax.security.auth.message.callback.PrivateKeyCallback.Request"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@page import="com.vo.CommVo"%>
 <%@page import="com.dao.CommunityDAO"%>
+<%@page import="com.vo.cReplyVO"%>
 <%@ page import="java.util.*"%>
 
 
@@ -25,6 +26,8 @@
 <%
 	int c_id = Integer.parseInt(request.getParameter("c_id"));
 	System.out.println(c_id);
+	String id = (String)session.getAttribute("id");
+	System.out.print("ÎåìÍ∏Ä Îã® ÏÇ¨Îûå ID"+id);
 %>
 
 <div id="page">
@@ -45,7 +48,7 @@
 				
 				<li><a href="#">Pages</a>
 				<ul class="sub-menu">
-					<li><a href="board.html">∞‘Ω√∆«</a></li>
+					<li><a href="board.html">Í≤åÏãúÌåê</a></li>
 					<li><a href="qna.html">Q&A</a></li>
 					
 				</ul>
@@ -55,15 +58,15 @@
 		</div>
 		</nav>
 		</header>
-		<!-- ∞‘Ω√∆« ±€ææ -->
+		<!-- Í≤åÏãúÌåê Í∏ÄÏî® -->
 		<div id="content" class="site-content">
 			<div id="primary" class="content-area column two-thirds">
 				<main id="main" class="site-main" role="main">
 				<article>
 				<header class="entry-header">
-				<h1 class="entry-title">∞‘Ω√∆«</h1>
+				<h1 class="entry-title">Í≤åÏãúÌåê</h1>
 				<div class="entry-meta">
-						<span class="posted-on"><time class="entry-date published">ø©∑ØªÁ∂˜µÈ∞˙ º“≈Î«ÿ ∫∏ººø‰.</time></span>						
+						<span class="posted-on"><time class="entry-date published">Ïó¨Îü¨ÏÇ¨ÎûåÎì§Í≥º ÏÜåÌÜµÌï¥ Î≥¥ÏÑ∏Ïöî.</time></span>						
 						
 					</div>
 				<div class="entry-thumbnail">					
@@ -72,22 +75,22 @@
 				</header>
 				<!-- .entry-header -->
 				<div class="entry-content">
-					<!-- ∞‘Ω√∆« -->
+					<!-- Í≤åÏãúÌåê -->
 					<div class="container" style="margin-top:2%">
 						
 						<div class="row">
 							<div class="col-md-3" style="float: right;">
 								<form action="#" method="get">
 									<div class="input-group">
-										<!-- ∞‘Ω√∆« ∞Àªˆ -->
+										<!-- Í≤åÏãúÌåê Í≤ÄÏÉâ -->
 										<input class="form-control" id="system-search" name="q" placeholder="Search for" required>
-										<!-- ∞‘Ω√∆« ∞Àªˆæ∆¿Ãƒ‹ -->
+										<!-- Í≤åÏãúÌåê Í≤ÄÏÉâÏïÑÏù¥ÏΩò -->
 										<button type="button" class="searchBtn" id="searchBtn"></button>
 									</div>
 								</form>
 							</div>
 							<div class="col-md-9">
-								<!-- ¡§∏ª ≈◊¿Ã∫Ì∏∏ -->
+								<!-- Ï†ïÎßê ÌÖåÏù¥Î∏îÎßå -->
 							 <table class="table table-striped" style="text-align: center;">
 										<thead>
 											<tr>
@@ -132,8 +135,52 @@
 							</div>
 						</div>
 					</div>
-					<!-- ∞‘Ω√∆« ≥° -->
+					<!-- Í≤åÏãúÌåê ÎÅù -->
 				</div>
+				
+				<!--ÎåìÍ∏Ä Îã¨Í∏∞ -->
+				<form id="inputreply" action="CReplyService" class="input-group" method="post">
+ 
+    			<textarea name = "creply" rows = "4" cols = "40"></textarea>
+    			<input type="hidden" name="id" value=<%=id %>>
+    			<input type="hidden" name="c_id" value=<%=c_id %>><!-- Í≤åÏãúÍ∏Ä Î≤àÌò∏ÎèÑ Î≥¥ÎÇ¥ Ï§òÏïº Ìï® -->
+    			<button class="submit">ÎåìÍ∏Ä Îì±Î°ù</button>
+    
+				</form>
+				
+				<!-- ÎåìÍ∏Ä Î≥¥Í∏∞ -->
+				<tr>
+					<td>
+	
+					<%
+                  try {
+         	         CommunityDAO dao = new CommunityDAO();
+         	         ArrayList<cReplyVO> arr= dao.rcommShow(c_id);
+					 for(int i=0; i<arr.size(); i++){
+         	        	 %>
+          	        	  <tr>
+                          <td><%=arr.get(i).getRc_id() %></td>
+                         <td><%=arr.get(i).getId() %></td>
+                         <td><%=arr.get(i).getC_id() %></td>
+                          <td><%=arr.get(i).getR_text() %></td>
+                          <td><%=arr.get(i).getR_date() %></td>
+                        </tr>      
+                        <%
+                        System.out.println("ÎåìÍ∏ÄÎ≤àÌò∏"+arr.get(i).getRc_id());
+                        System.out.println("ÎåìÍ∏Ä ÏûëÏÑ±Ïûê ÏïÑÏù¥Îîî"+arr.get(i).getId());
+                        System.out.println("Í≤åÏãúÍ∏Ä Î≤àÌò∏"+arr.get(i).getC_id());
+                        System.out.println("ÎåìÍ∏Ä ÎÇ¥Ïö©"+arr.get(i).getR_text());
+                        System.out.println("ÏãúÍ∞Ñ"+arr.get(i).getR_date());
+                        %>
+         	       <%
+					}
+         	       } catch (Exception e) {
+         	         // TODO Auto-generated catch block
+         	         e.printStackTrace();
+         	      }
+                  %> 
+                  </td>
+	</tr>
 				<!-- .entry-content -->
 				<footer class="entry-footer">
 				</footer>

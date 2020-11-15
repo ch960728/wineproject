@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +23,7 @@
 		<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<h1 class="site-title"><a href="index.html" rel="Search">Dionysus</a></h1>
-			<h2 class="site-description">³Ê ¶§¹®¿¡ ÈïÀÌ ´Ù ±úÁ®¹ö·ÈÀ¸´Ï±î Ã¥ÀÓÁ®</h2>
+			<h2 class="site-description">ë„ˆ ë•Œë¬¸ì— í¥ì´ ë‹¤ ê¹¨ì ¸ë²„ë ¸ìœ¼ë‹ˆê¹Œ ì±…ìž„ì ¸</h2>
 		</div>
 		<nav id="site-navigation" class="main-navigation">
 		<button class="menu-toggle">Menu</button>
@@ -36,7 +36,7 @@
 				
 				<li><a href="#">Pages</a>
 				<ul class="sub-menu">
-					<li><a href="board.html">°Ô½ÃÆÇ</a></li>
+					<li><a href="board.html">ê²Œì‹œíŒ</a></li>
 					<li><a href="qna.html">Q&A</a></li>
 					
 				</ul>
@@ -51,12 +51,12 @@
 				<!-- .navigation -->
 				<div id="comments" class="comments-area">
 					<div id="respond" class="comment-respond">
-						<h3 id="reply-title" class="comment-reply-title">±Û ÀÛ¼ºÇÏ±â <small><a rel="nofollow" id="cancel-comment-reply-link" href="/demo-moschino/embed-audio/#respond" style="display:none;">Cancel reply</a></small></h3>
+						<h3 id="reply-title" class="comment-reply-title">ê¸€ ìž‘ì„±í•˜ê¸° <small><a rel="nofollow" id="cancel-comment-reply-link" href="/demo-moschino/embed-audio/#respond" style="display:none;">Cancel reply</a></small></h3>
 						
-						<form action="CommService" method="post" id="commentform" class="comment-form" enctype="multipart/form-data"><!-- »çÁøÀü¼ÛÇÒ ¶© enctype="multipart/form-data"-->
+						<form action="CommService" method="post" id="commentform" class="comment-form" enctype="multipart/form-data"><!-- ì‚¬ì§„ì „ì†¡í•  ë• enctype="multipart/form-data"-->
 							<p class="comment-form-comment">
 								<input type="hidden" name="id" value=<%=id %> id="comment_post_ID">
-								<input type="text"  class="input-field" name = "title" placeholder="Á¦¸ñ" required>
+								<input type="text"  class="input-field" name = "title" placeholder="ì œëª©" required>
 							</p>
 							<p class="comment-form-author">
 								 <textarea name = "content" rows = "15" cols = "40"></textarea>
@@ -64,7 +64,7 @@
 							<p class="form-submit">
                             <input type="file" name = "file" class="image_inputType_file">
                             </p>
-                                <button class="submit">µî·ÏÇÏ±â</button>
+                                <button class="submit">ë“±ë¡í•˜ê¸°</button>
 							<noscript>
 							</noscript>
 						</form>
@@ -98,6 +98,7 @@
 <script src='js/masonry.pkgd.min.js'></script>
 <script src='js/photo.js'></script>
 <script src='js/photo_pre.js'></script>
+
 
 </body>
 </html>

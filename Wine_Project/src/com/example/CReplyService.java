@@ -17,18 +17,22 @@ public class CReplyService extends HttpServlet {
 
 
 		String id = request.getParameter("id");
-		String creply = request.getParameter("creply");
+		int c_id = Integer.parseInt(request.getParameter("c_id"));
+		String rc_text = request.getParameter("creply");
 		
-		System.out.println("아이디"+id);
-		System.out.println("creply"+creply);
-		
+		System.out.println("서블릿");
+		System.out.println("댓글 단 사람 아이디 서블렛"+id);
+		System.out.println("게시글 번호"+c_id);
+		System.out.println("댓글내용"+rc_text);
+		System.out.println("------");
 		CommunityDAO dao = new CommunityDAO();
-		int cnt = dao.creply(id, creply);
+		int cnt = dao.creply(id,c_id, rc_text);
 		
-		if (cnt > 0) {
-			
-			response.sendRedirect("Login.jsp");
+		if(cnt>0) {
+			System.out.println("댓글 등록 완료");
+			response.sendRedirect("Cinfo.jsp");
 		}
+		
 		
 	}
 

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.ProjectDAO;
 
@@ -18,6 +19,7 @@ import com.dao.ProjectDAO;
 public class JoinService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("name");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -33,7 +35,8 @@ public class JoinService extends HttpServlet {
 		int cnt = dao.Join(name, id,  pw,  mail, tel, tendency, sex,  birth );
 		// db conn
 		if (cnt > 0) {
-			
+			HttpSession session = request.getSession();
+			session.setAttribute("id", id);
 			response.sendRedirect("Login.jsp");
 		}
 	}

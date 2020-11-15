@@ -48,7 +48,7 @@ public class CommunityDAO {
 			e.printStackTrace();
 		}
 	}
-	//���ۼ�
+	//게시글 쓰기
 	public int CWrite(String c_title, String id, String c_text, 
 						String c_img) {
 		try {
@@ -91,13 +91,16 @@ public class CommunityDAO {
 		return cnt;
 	}
 	//게시글 댓글 등록
-	public int creply(String id, String r_text) {
+	public int creply(String id,  int c_id, String rc_text) {
+		System.out.println("DAO"+id+c_id+rc_text);
 		try {
 			getConn();
-			String sql = "insert into wine_member values(member_seq.nextval,?,?,sysdate)";
+			String sql = "insert into c_reply values(rcomm_seq.nextval,?,?,?,sysdate)";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id); //session���� �޾ƿ;���
-			psmt.setString(2, r_text);
+			psmt.setString(1, id); //session에서 받아오자
+			psmt.setInt(2,c_id);
+			psmt.setString(3, rc_text);
+			
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,9 +112,9 @@ public class CommunityDAO {
 	}
 	//게시글 가져오기
 	public ArrayList<CommVo> commSelect() {
-		CommVo vo = null; // ��ü ����
+		CommVo vo = null; 
 		ArrayList<CommVo> arr = new ArrayList<>();
-		System.out.println("Ŀ�´�Ƽ �Լ� ȣ��");
+		System.out.println("게시글 등록함수 호출");
 		try {
 			getConn();
 
@@ -131,7 +134,6 @@ public class CommunityDAO {
 				int c_count = rs.getInt(6);
 				String c_date = rs.getString(7);
 
-
 				vo = new CommVo(c_id, title, id, c_text, c_img, c_count, c_date);
 				System.out.println(title+id+c_date+c_count);				
 				arr.add(vo);
@@ -147,7 +149,7 @@ public class CommunityDAO {
 	
 	//게시글 상세보기
 		public ArrayList<CommVo> CommInfo(int c_id) {
-			CommVo vo = null; // ㅇ??
+			CommVo vo = null;
 			ArrayList<CommVo> arr = new ArrayList<>();
 			
 			System.out.println("게시글 상세보기");
@@ -198,7 +200,7 @@ public class CommunityDAO {
 				psmt.setInt(1, c_id); //session���� �޾ƿ;���
 				rs = psmt.executeQuery();
 
-				if(rs.next()) {
+				while(rs.next()) {
 					int rc_id = rs.getInt(1);
 					String id = rs.getString(2);
 					c_id = rs.getInt(3);

@@ -21,16 +21,15 @@ public class UpdateService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String tel = request.getParameter("pw");
-		String pw = request.getParameter("tel");
+		int newPw = Integer.parseInt(request.getParameter("newPw"));
 		
 		
 		HttpSession session = request.getSession();
-		String email = (String)session.getAttribute("email");
-		
+		String id = (String)session.getAttribute("id");
+		System.out.println("변경할 id, pw: "+id+ newPw);
 		ProjectDAO dao = new ProjectDAO();
-		//int cnt = dao.Update(pw,tel,email);
-		//if (cnt > 0) {
+		int cnt = dao.Update(id,newPw);
+		if (cnt > 0) {
 			response.sendRedirect("login.html");
 		}
 	}

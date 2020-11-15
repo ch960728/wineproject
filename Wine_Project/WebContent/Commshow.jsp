@@ -20,6 +20,10 @@
 <link rel='stylesheet' href='css/easy-responsive-shortcodes.css' type='text/css' media='all'/>
 </head>
 <body class="single single-post">
+
+
+
+
 <div id="page">
 	<div class="container">
 		<header id="masthead" class="site-header">

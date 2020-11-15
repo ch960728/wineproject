@@ -48,7 +48,7 @@ public class ProjectDAO {
 			e.printStackTrace();
 		}
 	}
-    //È¸¿ø°¡ÀÔ
+    //íšŒì›ê°€ì…
 	public int Join(String name, String id, String pw, String mail,String tel,String tendency,String sex, String birth ) {
 		try {
 			getConn();
@@ -59,7 +59,7 @@ public class ProjectDAO {
 			psmt.setString(3, pw);
 			psmt.setString(4, mail);
 			psmt.setString(5, tel);
-			psmt.setString(6, "none"); //¼³¹®Á¶»ç¸¦ ¾ÈÇÏ°í È¸¿ø°¡ÀÔÀ» ÇßÀ» °æ¿ì noneÀ» ³ÖÀ½
+			psmt.setString(6, "none"); //ì¼ë‹¨ ì„±í–¥ nullë¡œ ë°›ì•„ì˜´
 			psmt.setString(7, sex);
 			psmt.setString(8, birth);
 
@@ -72,7 +72,7 @@ public class ProjectDAO {
 		return cnt;
 
 	}
-	//¼³¹®Á¶»ç¸¦ ÅëÇØ È¸¿ø°¡ÀÔÀ» ÇÒ °æ¿ì, SessionÀ¸·Î tendency¸¦ ¹Ş¾Æ¿Í¾ß ÇÒµí
+	//ì„¤ë¬¸ì¡°ì‚¬ ì´í›„ ë¡œê·¸ì¸
 	public int Join2(String name, String id, String pw, String mail,String tel,String tendency,String sex, String birth ) {
 		try {
 			getConn();
@@ -97,7 +97,7 @@ public class ProjectDAO {
 
 	}
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public boolean Login(String id, String pw) {
 		boolean check = false;
 		try {
@@ -125,7 +125,7 @@ public class ProjectDAO {
 		}
 		return check;
 	}
-	//¼³¹®Á¶»ç ÀÌÈÄ ¼ºÇâ ¾÷µ¥ÀÌÆ®
+	//ì„¤ë¬¸ì¡°ì‚¬ ë‹¤ì‹œ í•´ì„œ ì„±í–¥ ì ê²€
 	public int change_ten(String id, String tendency) {
 		try {
 			getConn();
@@ -143,9 +143,9 @@ public class ProjectDAO {
 		return cnt;
 
 	}
-	//¸â¹ö vo°¡Á®¿À±â id¸¸ °¡Á®¿È
+	//ë§´ë²„ VO
 	public ArrayList<ProjectVo> memeberSelect() {
-		ProjectVo vo = null; // °´Ã¼ »ı¼º
+		ProjectVo vo = null; // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		ArrayList<ProjectVo> arr = new ArrayList<>();
 
 		try {
@@ -153,7 +153,7 @@ public class ProjectDAO {
 
 			// ---------------------------------------------------------------
 
-			String sql = "select * from project_member";
+			String sql = "select * from wine_member";
 
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -162,14 +162,14 @@ public class ProjectDAO {
 				int u_id  = rs.getInt(1);
 				String user_name  = rs.getString(2);
 				String id =  rs.getString(3);
-				String mail = rs.getString(4);
-				String tel = rs.getString(5);
-				String tendency = rs.getString(6);
-				String sex = rs.getString(7);
-				String birth = rs.getString(8);
-				String join_date = rs.getString(9);
+				String mail = rs.getString(5);
+				String tel = rs.getString(6);
+				String tendency = rs.getString(7);
+				String sex = rs.getString(8);
+				String birth = rs.getString(9);
+				String join_date = rs.getString(10);
 
-				// VO(DTO) : ¸ğµâ³¢¸® µ¥ÀÌÅÍ¸¦ ¼Û/¼ö½ÅÇÒ ¶§ »ç¿ëÇÏ´Â »õ·Î¿î µ¥ÀÌÅÍ Å¸ÀÔ
+				// VO(DTO) : ï¿½ï¿½â³¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
 
 				vo = new ProjectVo(u_id,user_name,id,mail,tel,tendency,
 						sex, birth, join_date);
@@ -183,6 +183,68 @@ public class ProjectDAO {
 		}
 		return arr;
 	}
+	
+	//íšŒì›ì •ë³´
+	public ArrayList<ProjectVo> Mypage(String id) {
+		ProjectVo vo = null; 
+		ArrayList<ProjectVo> arr = new ArrayList<>();
+
+		try {
+			getConn();
+
+			// ---------------------------------------------------------------
+
+			String sql = "select * from wine_member where id=?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				int u_id  = rs.getInt(1);
+				String user_name  = rs.getString(2);
+				id =  rs.getString(3);
+				String mail = rs.getString(5);
+				String tel = rs.getString(6);
+				String tendency = rs.getString(7);
+				String sex = rs.getString(8);
+				String birth = rs.getString(9);
+				String join_date = rs.getString(10);
+
+				// VO(DTO) : ï¿½ï¿½â³¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
+
+				vo = new ProjectVo(u_id,user_name,id,mail,tel,tendency,
+						sex, birth, join_date);
+				arr.add(vo);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return arr;
+	}
+	
+	//ë©¤ë²„ ì—…ë°ì´íŠ¸
+	public int Update(String id, int pw) {
+		try {
+			getConn();
+			String sql = "update wine_member set pw=? where id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, pw);
+			psmt.setString(2, id);
+			
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+
+	}
+
 	
 	
 }

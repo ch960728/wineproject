@@ -17,8 +17,8 @@ public class LoginService extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 	
-		System.out.println("¹Ş¾Æ¿Âid"+id);
-		System.out.println("¹Ş¾Æ¿Âpw"+pw);
+		System.out.println("ì‚¬ìš©ìid"+id);
+		System.out.println("ì‚¬ìš©ìpw"+pw);
 		
 		ProjectDAO dao = new ProjectDAO();
 		boolean check = dao.Login(id,pw);
@@ -30,9 +30,9 @@ public class LoginService extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("id", id);
 				response.sendRedirect("index.jsp");
-				System.out.println("·Î±×ÀÎ ¼º°ø");
+				System.out.println("ë¡œê·¸ì¸ì„±ê³µ");
 			}else {
-				System.out.println("´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä");
+				System.out.println("ë¡œê·¸ì¸ì‹¤íŒ¨");
 			}
 	         
 	       

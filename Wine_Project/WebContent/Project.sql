@@ -2,7 +2,7 @@
 
 
 select * from wine_member
-delete from wine_member where u_id = 25
+delete from wine_member where u_id = 6
 DROP TABLE wine_member
 <!-- 사용자 테이블 -->
 create table wine_member(
@@ -19,9 +19,20 @@ create table wine_member(
 )
 <!--사용자 증가 함수 -->
  CREATE SEQUENCE member_seq
+ 
+ <!--좋아요 테이블인데 나중에 와인테이블 만들면 적용하기-->
+ create table user_ten(
+	u_id number(38),
+	p_id number(100),
+	score number(10),
+	constraint user_ten_fk foreign key (u_id) references wine_member (u_id),
+	constraint user_ten_fk2 foreign key (p_id) references wine_product (p_id)
+)
+ 
 
 <!-- c_id, c_title, c_text, U-id(fk), date, c_count-->
  DROP TABLE community
+delete from community where c_id = 5
  select * from community
 create table community(
 	c_id number(38) primary key,
@@ -46,6 +57,7 @@ create table c_reply(
 	c_id number(38),
 	rc_text varchar(1000),
 	rc_date date,
+	
 	constraint reply_eno_fk foreign key (id) references wine_member (id),
 	constraint reply_rc_fk foreign key (c_id) references community (c_id)
 )
@@ -53,6 +65,6 @@ create table c_reply(
 delete from c_reply where rc_id = 25
 
 
-<!--占쌉시깍옙 占쏙옙占� 占쏙옙호 占싸울옙 -->
+<!--댓글 번호만들기 -->
  CREATE SEQUENCE rcomm_seq
 

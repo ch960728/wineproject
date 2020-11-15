@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,26 +19,26 @@
                 </div>
                
                 <form id="login" action="LoginService" class="input-group" method="post">
-                    <input type="text"  class="input-field" name = "id" placeholder="æ∆¿Ãµ" required>
-                    <input type="password" class="input-field" name="pw" placeholder="∫Òπ–π¯»£" required>
+                    <input type="text"  class="input-field" name = "id" placeholder="ÏïÑÏù¥Îîî" required>
+                    <input type="password" class="input-field" name="pw" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏" required>
                     <button class="submit">Login</button>
                 </form>
                 
                 <form id="register" action="JoinService" class="input-group" method="post">
                    
 
-                    <input type="text" name="id" class="input-field" placeholder="æ∆¿Ãµ">
-                    <input type="password" name="pw" class="input-field" placeholder="∫Òπ–π¯»£">
-                    <input type="password" name="pw" class="input-field" placeholder="∫Òπ–π¯»£ »Æ¿Œ">
-                    <input type="text" name="name" class="input-field" placeholder="¿Ã∏ß">
+                    <input type="text" name="id" class="input-field" placeholder="ÏïÑÏù¥Îîî">
+                    <input type="password" name="pw" class="input-field" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏">
+                    <input type="password" name="pw" class="input-field" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏ ÌôïÏù∏">
+                    <input type="text" name="name" class="input-field" placeholder="Ïù¥Î¶Ñ">
                 
                  <div class = "input-field" >
-                    <input type="radio" name="sex" value= 'M' class="Sex" style="margin-top: 10px;">≥≤¿⁄ &nbsp;&nbsp;
-                    <input type="radio" name="sex" value= 'F' class="Sex">ø©¿⁄ &nbsp;&nbsp;
+                    <input type="radio" name="sex" value= 'M' class="Sex" style="margin-top: 10px;">ÎÇ®Ïûê &nbsp;&nbsp;
+                    <input type="radio" name="sex" value= 'F' class="Sex">Ïó¨Ïûê &nbsp;&nbsp;
                  </div>
                     <input type="date" name="birth" value='1999-01-01' class="input-field" placeholder="Birth">
-                <input type="text" name="tel" class="input-field" placeholder="¿¸»≠π¯»£ '-'∏¶ ¡¶ø‹«œ∞Ì ¿‘∑¬«ÿ ¡÷ººø‰ ex)01011111111">
-                <input type="text" name="mail" class="input-field" placeholder="¿Ã∏ﬁ¿œ">            
+                <input type="text" name="tel" class="input-field" placeholder="Ï†ÑÌôîÎ≤àÌò∏ '-'Î•º Ï†úÏô∏ÌïòÍ≥† ÏûÖÎ†•Ìï¥ Ï£ºÏÑ∏Ïöî ex)01011111111">
+                <input type="text" name="mail" class="input-field" placeholder="Ïù¥Î©îÏùº">            
                    
 
                     <button class="submit">REGISTER</button>

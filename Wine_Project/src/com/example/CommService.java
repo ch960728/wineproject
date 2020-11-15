@@ -20,32 +20,32 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class CommService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String path = request.getSession().getServletContext().getRealPath("upload");
-			
+			System.out.println(path);
 			ServletContext context = getServletContext();
 			String uploadFilepath = context.getRealPath(path);
 			
-		    int size = 1024 * 1024 * 10; // ÀúÀå°¡´ÉÇÑ ÆÄÀÏ Å©±â
-		    String file = ""; // ¾÷·Îµå ÇÑ ÆÄÀÏÀÇ ÀÌ¸§(ÀÌ¸§ÀÌ º¯°æµÉ¼ö ÀÖ´Ù)
-		    String originalFile = ""; // ÀÌ¸§ÀÌ º¯°æµÇ±â Àü ½ÇÁ¦ ÆÄÀÏ ÀÌ¸§
+		    int size = 1024 * 1024 * 10; // ì´ë¯¸ì§€ ìµœëŒ€ ì‚¬ì´ì¦ˆ ì¡°ì •
+		    String file = ""; //íŒŒì¼ ì´ë¦„
+		    String originalFile = ""; // ì›ë³¸íŒŒì¼ì´ë¦„
 		    String id = "";
 			String title = "";
 			String content = "";
 			
-		    // ½ÇÁ¦·Î ÆÄÀÏ ¾÷·ÎµåÇÏ´Â °úÁ¤
+		    //ì´ë¯¸ì§€ ì €ì¥í•˜ê¸°
 		    try{
-		        MultipartRequest multi = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
+		        MultipartRequest multi = new MultipartRequest(request, path, size, "EUC-KR", new DefaultFileRenamePolicy());
 		        Enumeration files = multi.getFileNames();
-		        String str = (String)files.nextElement(); // ÆÄÀÏ ÀÌ¸§À» ¹Ş¾Æ¿Í stringÀ¸·Î ÀúÀå
-		        file = multi.getFilesystemName(str); // ¾÷·Îµå µÈ ÆÄÀÏ ÀÌ¸§ °¡Á®¿È
-		        originalFile = multi.getOriginalFileName(file); // ¿ø·¡ÀÇ ÆÄÀÏÀÌ¸§ °¡Á®¿È
+		        String str = (String)files.nextElement(); // íŒŒì¼ì´ë¦„ì„ ë¬¸ìì—´ í˜•ì‹ìœ¼ë¡œ ë°›ìŒ
+		        file = multi.getFilesystemName(str); 
+		        originalFile = multi.getOriginalFileName(file); // íŒŒì¼ ì›ë³¸ ì´ë¦„ ë°›ê¸°
 		        id = multi.getParameter("id");
 		        content = multi.getParameter("content");
 		        title = multi.getParameter("title");
 		        
-		        System.out.println("ÆÄÀÏ¸í"+file);
-		        System.out.println("¾ÆÀÌµğ"+id);
-		        System.out.println("Á¦¸ñ"+title);
-		        System.out.println("³»¿ë"+content);
+		        System.out.println("íŒŒì¼ì´ë¦„"+file);
+		        System.out.println("ì‚¬ìš©ìid"+id);
+		        System.out.println("ê¸€ì œëª©"+title);
+		        System.out.println("ê¸€ë‚´ìš©"+content);
 		        
 		    	CommunityDAO dao = new CommunityDAO();
 				int cnt = dao.CWrite(title, id, content, file);
