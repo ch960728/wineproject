@@ -1,5 +1,5 @@
 <%@page import="javax.security.auth.message.callback.PrivateKeyCallback.Request"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.vo.CommVo"%>
 <%@page import="com.dao.CommunityDAO"%>
@@ -77,18 +77,7 @@
 				<div class="entry-content">
 					<!-- 게시판 -->
 					<div class="container" style="margin-top:2%">
-						
 						<div class="row">
-							<div class="col-md-3" style="float: right;">
-								<form action="#" method="get">
-									<div class="input-group">
-										<!-- 게시판 검색 -->
-										<input class="form-control" id="system-search" name="q" placeholder="Search for" required>
-										<!-- 게시판 검색아이콘 -->
-										<button type="button" class="searchBtn" id="searchBtn"></button>
-									</div>
-								</form>
-							</div>
 							<div class="col-md-9">
 								<!-- 정말 테이블만 -->
 							 <table class="table table-striped" style="text-align: center;">
@@ -98,60 +87,61 @@
 												<th width=50 style="word-break:break-all">Writer</th>
 												<th width=50 style="word-break:break-all">Date</th>
 												<th width=50 style="word-break:break-all">View</th>
-												<th width=50 style="word-break:break-all">Img</th>
                                             </tr>
 										</thead>
 										<tbody>
-				<%
-                  try {
-         	         CommunityDAO dao = new CommunityDAO();
-         	         ArrayList<CommVo> arr= dao.CommInfo(c_id);
-					for(int i=0; i<arr.size(); i++){
-         	        	 %>
-         	        	  <tr>
-                          <td><%=arr.get(i).getTitle() %></td>
-                          <td><%=arr.get(i).getId() %></td>
-                          <td><%=arr.get(i).getC_date() %></td>
-                          <td><%=arr.get(i).getC_count() %></td>
-                        </tr>
-                           
-                         <tr><img src="upload/<%= arr.get(i).getC_img()%>"/></tr>
-                         <td><%=arr.get(i).getC_text() %></td>
-                        <%
-                        System.out.println(arr.get(i).getTitle());
-                        System.out.println(arr.get(i).getId());
-                        System.out.println(arr.get(i).getC_date());
-                        System.out.println(arr.get(i).getC_img());
-                        %>
-         	       <%
-					}
-         	       } catch (Exception e) {
-         	         // TODO Auto-generated catch block
-         	         e.printStackTrace();
-         	      }
-                  %>
+											<%
+							                  try {
+							         	         CommunityDAO dao = new CommunityDAO();
+							         	          dao.Ccount(c_id);
+							         	         ArrayList<CommVo> arr= dao.CommInfo(c_id);
+												for(int i=0; i<arr.size(); i++){
+							         	        	 %>
+							         	        	  <tr>
+							                          <td><%=arr.get(i).getTitle() %></td>
+							                          <td><%=arr.get(i).getId() %></td>
+							                          <td><%=arr.get(i).getC_date() %></td>
+							                          <td><%=arr.get(i).getC_count() %></td>
+							                        </tr>
+							                        
+							                         <tr><td><img src="upload/<%= arr.get(i).getC_img()%>"/><p>
+							                         <%=arr.get(i).getC_text() %></td></tr>
+							                         
+							         	       <%
+												}
+							         	       } catch (Exception e) {
+							         	         // TODO Auto-generated catch block
+							         	         e.printStackTrace();
+							         	      }
+							                  %>
 										</tbody>
-                                    </table>		 
-							</div>
-						</div>
-					</div>
-					<!-- 게시판 끝 -->
-				</div>
+                                   </table>		 
+					
 				
 				<!--댓글 달기 -->
 				<form id="inputreply" action="CReplyService" class="input-group" method="post">
- 
-    			<textarea name = "creply" rows = "4" cols = "40"></textarea>
+    			<textarea name = "creply" rows = "4" cols = "60" width="1000px"></textarea>
     			<input type="hidden" name="id" value=<%=id %>>
     			<input type="hidden" name="c_id" value=<%=c_id %>><!-- 게시글 번호도 보내 줘야 함 -->
     			<button class="submit">댓글 등록</button>
-    
 				</form>
+						</div>
+						</div>
+					</div>
+					<!-- 게시판 끝 -->
+			
 				
 				<!-- 댓글 보기 -->
-				<tr>
-					<td>
-	
+		<table class="table table-striped" style="text-align: center;">
+			<thead>
+			<tr>
+				<th width=50 style="word-break:break-all">번호</th>
+				<th width=100 style="word-break:break-all">작성자</th>
+				<th width=1000 style="word-break:break-all">내용</th>
+				<th width=100 style="word-break:break-all">날짜</th>
+           </tr>	
+			</thead>
+			<tbody>
 					<%
                   try {
          	         CommunityDAO dao = new CommunityDAO();
@@ -159,19 +149,12 @@
 					 for(int i=0; i<arr.size(); i++){
          	        	 %>
           	        	  <tr>
-                          <td><%=arr.get(i).getRc_id() %></td>
+          	        	  <td><%=i+1 %></td>
                          <td><%=arr.get(i).getId() %></td>
-                         <td><%=arr.get(i).getC_id() %></td>
                           <td><%=arr.get(i).getR_text() %></td>
                           <td><%=arr.get(i).getR_date() %></td>
                         </tr>      
-                        <%
-                        System.out.println("댓글번호"+arr.get(i).getRc_id());
-                        System.out.println("댓글 작성자 아이디"+arr.get(i).getId());
-                        System.out.println("게시글 번호"+arr.get(i).getC_id());
-                        System.out.println("댓글 내용"+arr.get(i).getR_text());
-                        System.out.println("시간"+arr.get(i).getR_date());
-                        %>
+                        <p>
          	       <%
 					}
          	       } catch (Exception e) {
@@ -179,8 +162,9 @@
          	         e.printStackTrace();
          	      }
                   %> 
-                  </td>
-	</tr>
+          </tbody>
+         </table>
+		</div>
 				<!-- .entry-content -->
 				<footer class="entry-footer">
 				</footer>

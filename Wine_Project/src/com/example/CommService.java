@@ -33,7 +33,7 @@ public class CommService extends HttpServlet {
 			
 		    //이미지 저장하기
 		    try{
-		        MultipartRequest multi = new MultipartRequest(request, path, size, "EUC-KR", new DefaultFileRenamePolicy());
+		        MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 		        Enumeration files = multi.getFileNames();
 		        String str = (String)files.nextElement(); // 파일이름을 문자열 형식으로 받음
 		        file = multi.getFilesystemName(str); 

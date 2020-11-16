@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.CommunityDAO;
 
@@ -30,7 +31,10 @@ public class CReplyService extends HttpServlet {
 		
 		if(cnt>0) {
 			System.out.println("댓글 등록 완료");
-			response.sendRedirect("Cinfo.jsp");
+			HttpSession session = request.getSession();
+			session.setAttribute("id", id);
+			response.sendRedirect("Cinfo.jsp?c_id="+c_id);
+			System.out.println("댓글이후 페이지 새로고침"+c_id+ id);
 		}
 		
 		

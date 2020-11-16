@@ -61,11 +61,11 @@ public class CommunityDAO {
 			psmt.setString(4, c_img);
 			psmt.setInt(5, c_count);
 			cnt = psmt.executeUpdate();
-			System.out.println("�� ��� �Լ� ����");
-			System.out.println(c_title);
-			System.out.println(id);
-			System.out.println(c_text);
-			System.out.println(c_img);
+			//System.out.println("");
+			//System.out.println(c_title);
+			//System.out.println(id);
+			//System.out.println(c_text);
+			//System.out.println(c_img);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -77,9 +77,10 @@ public class CommunityDAO {
 	
 	//게시판 조회수 증가
 	public int Ccount(int c_id) {
+		System.out.println("조회수 증가 함수 호출");
 		try {
 			getConn();
-			String sql = "update community set c_count = c_count+1 where c_id=?)";
+			String sql = "update community set c_count = c_count+1 where c_id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, c_id);
 			cnt = psmt.executeUpdate();

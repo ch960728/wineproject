@@ -2,7 +2,7 @@
 
 
 select * from wine_member
-delete from wine_member where u_id = 6
+delete from wine_member where u_id = 21
 DROP TABLE wine_member
 <!-- 사용자 테이블 -->
 create table wine_member(
@@ -32,7 +32,7 @@ create table wine_member(
 
 <!-- c_id, c_title, c_text, U-id(fk), date, c_count-->
  DROP TABLE community
-delete from community where c_id = 5
+delete from community where id = 'admin'
  select * from community
 create table community(
 	c_id number(38) primary key,
@@ -49,7 +49,7 @@ create table community(
 
  
   DROP TABLE c_reply
-  select * from c_reply
+  select * from c_reply 
 <!--커뮤니티 댓글 -->
 create table c_reply(
 	rc_id number(38) primary key,
@@ -62,7 +62,7 @@ create table c_reply(
 	constraint reply_rc_fk foreign key (c_id) references community (c_id)
 )
 
-delete from c_reply where rc_id = 25
+delete from c_reply where id = 'test'
 
 
 <!--댓글 번호만들기 -->
