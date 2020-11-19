@@ -22,5 +22,6 @@
 <a href="MyPage.jsp">마이페이지</a>
 <a href="LogoutService">로그아웃</a>
 <a href="MemberShow.jsp">회원조회</a>
+<a href="Shop.jsp">상품보기</a>
 </body>
 </html>

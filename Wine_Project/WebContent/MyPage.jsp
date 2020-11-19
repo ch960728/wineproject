@@ -4,6 +4,9 @@
 <%@page import="com.dao.ProjectDAO"%>
 <%@page import="com.vo.CommVo"%>
 <%@page import="com.dao.CommunityDAO"%>
+<%@page import="com.vo.WineVo"%>
+<%@page import="com.vo.MyScoreVo"%>
+<%@page import="com.dao.WineDAO"%>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
@@ -15,22 +18,21 @@
 	<%
 		String id = (String)session.getAttribute("id");
 	%>
-
 		<%
-                  try {
-         	         ProjectDAO dao = new ProjectDAO();
-         	         ArrayList<ProjectVo> arr= dao.Mypage(id);
-         	        	 %>
-         	        	  <tr>
-                          <td>아이디:<%=arr.get(0).getId() %></td>
-                          <td>이름:<%=arr.get(0).getUser_name() %></td>
-                          <td>메일:<%=arr.get(0).getMail() %></td>
-                          <td>전화:<%=arr.get(0).getTel() %></td>
-                          <td>성향:<%=arr.get(0).getTendency() %></td>
-                          <td>성별:<%=arr.get(0).getSex() %></td>
-                          <td>생일:<%=arr.get(0).getBirth() %></td>
-                          <td>가입일:<%=arr.get(0).getJoin_date() %></td>
-                        </tr>
+            try {
+         	     ProjectDAO dao = new ProjectDAO();
+         	     ArrayList<ProjectVo> arr= dao.Mypage(id);
+          %>
+         	  <tr>
+                  <td>아이디:<%=arr.get(0).getId() %></td>
+                  <td>이름:<%=arr.get(0).getUser_name() %></td>
+                  <td>메일:<%=arr.get(0).getMail() %></td>
+                  <td>전화:<%=arr.get(0).getTel() %></td>
+                  <td>성향:<%=arr.get(0).getTendency() %></td>
+                  <td>성별:<%=arr.get(0).getSex() %></td>
+                  <td>생일:<%=arr.get(0).getBirth() %></td>
+                  <td>가입일:<%=arr.get(0).getJoin_date() %></td>
+              </tr>
          	       <%
 					
          	       } catch (Exception e) {
@@ -62,6 +64,27 @@
           	         e.printStackTrace();
           	      }
                   %>
-                  
+                <%
+                  try {
+                	  WineDAO dao = new WineDAO();
+          	         ArrayList<MyScoreVo> arr= dao.MyWineScore(id);
+          	         %>
+          	         <p>
+          	         <tr>점수 준 와인 보기</tr>
+          	         <div>
+          	         <%
+ 					for(int i=0; i<arr.size(); i++){
+          	        	 %>
+          	        	   <img src="upload/<%= arr.get(i).getImg()%>"/>
+                           <a href='shop_detail.jsp?wine_id=<%=arr.get(i).getWine_id()%>'><%=arr.get(i).getW_name() %></a>
+                           <a><%=arr.get(i).getScore() %>점</a>
+          	       <%
+ 					}
+          	       } catch (Exception e) {
+          	         // TODO Auto-generated catch block
+          	         e.printStackTrace();
+          	      }
+                  %>
+                  </div>
 </body>
 </html>

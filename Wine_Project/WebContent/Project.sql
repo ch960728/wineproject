@@ -20,19 +20,67 @@ create table wine_member(
 <!--사용자 증가 함수 -->
  CREATE SEQUENCE member_seq
  
- <!--좋아요 테이블인데 나중에 와인테이블 만들면 적용하기-->
- create table user_ten(
-	u_id number(38),
-	p_id number(100),
-	score number(10),
-	constraint user_ten_fk foreign key (u_id) references wine_member (u_id),
-	constraint user_ten_fk2 foreign key (p_id) references wine_product (p_id)
-)
  
+DROP TABLE wine
+ select * from wine
+ <!-- wine 테이블 -->
+ create table wine(
+ 	wine_id number(15),
+ 	w_name	varchar(200),
+ 	w_namee	varchar(200),
+ 	productk varchar(200),
+ 	producte varchar(200),
+ 	locationk varchar(200),
+ 	locatione varchar(200),
+ 	kind varchar(400),
+ 	kinds varchar(400),
+ 	use varchar(200),
+ 	alcohol varchar(40),
+ 	temper varchar(40),
+ 	grade varchar(50),
+ 	sugar varchar(5),
+ 	acidity	varchar(5),
+ 	body varchar(5),
+ 	tannin varchar(5),	
+ 	price varchar(10),
+ 	REMARK varchar(2000),
+ 	year varchar(5),
+ 	liter varchar(5),
+ 	fruit varchar(1),
+ 	flower varchar(1),
+ 	vegetable varchar(1),
+ 	spice varchar(1),
+ 	mineral varchar(1),
+ 	chemistry varchar(1),
+ 	animal varchar(1),
+ 	burnt varchar(1),
+ 	balsamic varchar(1),	
+ 	scent varchar(400),
+ 	menu varchar(1000),
+ 	img varchar(300)
+ )
+ 
+ alter table wine add primary key(wine_id)
+ 
+ <!--와인 점수 및 댓글 테이블-->
+ select * from wine_score
+ delete from wine_score where wine_id = 62
+ DROP TABLE wine_score
+ create table wine_score(
+ 	wr_id number(38) primary key,
+	id varchar(100),
+	wine_id number(10),
+	score number(10),
+	rw_text varchar(1000),
+	rw_date date,
+	constraint user_score_fk foreign key (id) references wine_member (id),
+	constraint user_score_fk2 foreign key (wine_id) references wine(wine_id)
+)
+  CREATE SEQUENCE wine_score_seq
 
 <!-- c_id, c_title, c_text, U-id(fk), date, c_count-->
  DROP TABLE community
-delete from community where id = 'admin'
+delete from community where id = 'test'
  select * from community
 create table community(
 	c_id number(38) primary key,

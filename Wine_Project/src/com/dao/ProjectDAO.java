@@ -234,7 +234,6 @@ public class ProjectDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, pw);
 			psmt.setString(2, id);
-			
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
