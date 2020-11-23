@@ -29,10 +29,16 @@ public class JoinService extends HttpServlet {
 		String sex = request.getParameter("sex");
 		String birth = request.getParameter("birth");
 		System.out.println(name+ id+  pw+  mail+ tel+ tendency+ sex+  birth);
-		
+		int cnt = 0;
 		
 		ProjectDAO dao = new ProjectDAO();
-		int cnt = dao.Join(name, id,  pw,  mail, tel, tendency, sex,  birth );
+		if(tendency.equals("null")) {
+			cnt = dao.Join(name, id,  pw,  mail, tel, tendency, sex,  birth );
+			System.out.println("성향 X");
+		}else {
+				cnt = dao.Join2(name, id,  pw,  mail, tel, tendency, sex,  birth );
+				System.out.println("성향 o");
+		}
 		// db conn
 		if (cnt > 0) {
 			HttpSession session = request.getSession();

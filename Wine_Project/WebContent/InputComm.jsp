@@ -18,6 +18,7 @@
 	<%
 		String id = (String)session.getAttribute("id");
 	%>
+	
 <div id="page">
 	<div class="container">
 		<header id="masthead" class="site-header">

@@ -1,67 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<html>
     <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="wasiii"/>
         <title>Login</title>
-        <link rel="stylesheet" href="css/login.css">
+        <link href="css/pages/login.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
-        <div class="wrap">
-            <div class="form-wrap">
-                <div class="button-wrap">
-                    <div id="btn"></div>
-                    <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
-                    <button type="button" class="togglebtn" onclick="register()">REGISTER</button>
-                </div>
-               
-                <form id="login" action="LoginService" class="input-group" method="post">
-                    <input type="text"  class="input-field" name = "id" placeholder="ÏïÑÏù¥Îîî" required>
-                    <input type="password" class="input-field" name="pw" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏" required>
-                    <button class="submit">Login</button>
-                </form>
-                
-                <form id="register" action="JoinService" class="input-group" method="post">
-                   
+     <form id="login" action="LoginService" method="post">  
+        <div id="login_box">
+            <h1 style="margin-top: 70px;">∑Œ±◊¿Œ</h1>
+		
+                    <div id="login_box2" >
+                    
+                    <input type="text" name="id" class="login" placeholder="æ∆¿Ãµ∏¶ ¿‘∑¬«ÿ¡÷ººø‰" required/><br>
+                    <input type="password" name="pw" class="login" placeholder="∫Òπ–π¯»£∏¶ ¿‘∑¬«ÿ¡÷ººø‰" required/>
+                    
+                    </div>
 
-                    <input type="text" name="id" class="input-field" placeholder="ÏïÑÏù¥Îîî">
-                    <input type="password" name="pw" class="input-field" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏">
-                    <input type="password" name="pw" class="input-field" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏ ÌôïÏù∏">
-                    <input type="text" name="name" class="input-field" placeholder="Ïù¥Î¶Ñ">
-                
-                 <div class = "input-field" >
-                    <input type="radio" name="sex" value= 'M' class="Sex" style="margin-top: 10px;">ÎÇ®Ïûê &nbsp;&nbsp;
-                    <input type="radio" name="sex" value= 'F' class="Sex">Ïó¨Ïûê &nbsp;&nbsp;
-                 </div>
-                    <input type="date" name="birth" value='1999-01-01' class="input-field" placeholder="Birth">
-                <input type="text" name="tel" class="input-field" placeholder="Ï†ÑÌôîÎ≤àÌò∏ '-'Î•º Ï†úÏô∏ÌïòÍ≥† ÏûÖÎ†•Ìï¥ Ï£ºÏÑ∏Ïöî ex)01011111111">
-                <input type="text" name="mail" class="input-field" placeholder="Ïù¥Î©îÏùº">            
-                   
-
-                    <button class="submit">REGISTER</button>
-                </form>
-            </div>
+     
+    <input type="submit" class="btn" value="Login"style="position:absolute; margin-top: 330px;  margin-left: 310px;"/>  
         </div>
-        <script>
-            var x = document.getElementById("login");
-            var y = document.getElementById("register");
-            var z = document.getElementById("btn");
-            
-            
-            function login(){
-                x.style.left = "50px";
-                y.style.left = "450px";
-                z.style.left = "0";
-            }
+     </form>  
 
-            function register(){
-                x.style.left = "-400px";
-                y.style.left = "50px";
-                z.style.left = "110px";
-            }
-        </script>
     </body>
-</html> 
+</html>

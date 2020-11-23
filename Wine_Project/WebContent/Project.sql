@@ -2,7 +2,7 @@
 
 
 select * from wine_member
-delete from wine_member where u_id = 21
+delete from wine_member where u_id = 62
 DROP TABLE wine_member
 <!-- 사용자 테이블 -->
 create table wine_member(
@@ -20,6 +20,9 @@ create table wine_member(
 <!--사용자 증가 함수 -->
  CREATE SEQUENCE member_seq
  
+ <!-- 사용자 설문조사 테이블-->
+ 
+
  
 DROP TABLE wine
  select * from wine
@@ -68,12 +71,12 @@ DROP TABLE wine
  DROP TABLE wine_score
  create table wine_score(
  	wr_id number(38) primary key,
-	id varchar(100),
-	wine_id number(10),
+	u_id number(38),
+	wine_id number(38),
 	score number(10),
 	rw_text varchar(1000),
 	rw_date date,
-	constraint user_score_fk foreign key (id) references wine_member (id),
+	constraint user_score_fk foreign key (u_id) references wine_member (u_id),
 	constraint user_score_fk2 foreign key (wine_id) references wine(wine_id)
 )
   CREATE SEQUENCE wine_score_seq
@@ -115,4 +118,18 @@ delete from c_reply where id = 'test'
 
 <!--댓글 번호만들기 -->
  CREATE SEQUENCE rcomm_seq
+ 
+ <!--Q&A테이블 -->
+select * from qna
+drop table qna
+create table qna(
+	q_id number(38) primary key,
+	id varchar(100),
+	q_text varchar2(2000),
+	a_text varchar2(2000),
+	q_date date,
+	
+	constraint qest_fk foreign key (id) references wine_member (id)
+)
 
+CREATE SEQUENCE q_seq

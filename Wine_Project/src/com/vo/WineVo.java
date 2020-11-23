@@ -127,6 +127,17 @@ public class WineVo {
 	}
 
 
+	public WineVo(int wine_id) {
+		super();
+		this.wine_id = wine_id;
+	}
+
+	public WineVo(int wine_id,String w_name,String img) {
+		super();
+		this.wine_id = wine_id;
+		this.w_name = w_name;
+		this.img = img;
+	}
 	public int getWine_id() {
 		return wine_id;
 	}

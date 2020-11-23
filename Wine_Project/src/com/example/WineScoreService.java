@@ -16,18 +16,19 @@ public class WineScoreService extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
+		int u_id = Integer.parseInt(request.getParameter("u_id"));
 		int wine_id = Integer.parseInt(request.getParameter("wine_id"));
 		int score = Integer.parseInt(request.getParameter("score"));
 		String rw_text = request.getParameter("rw_text");
 		
 		System.out.println("서블릿");
-		System.out.println("점수 준 사람"+id);
+		System.out.println("점수 준 사람"+u_id);
 		System.out.println("와인 번호"+wine_id);
 		System.out.println("점수"+score);
 		System.out.println("댓글 내용"+rw_text);
 		System.out.println("------");
 		WineDAO dao = new WineDAO();
-		int cnt = dao.SetScore(id,wine_id,score,rw_text);
+		int cnt = dao.SetScore(u_id,wine_id,score,rw_text);
 		
 		if(cnt>0) {
 			System.out.println("댓글 등록 완료");

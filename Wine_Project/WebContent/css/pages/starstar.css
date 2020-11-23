@@ -1,0 +1,70 @@
+
+
+
+
+
+    .rating .rate_radio + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+.rating .rate_radio:checked + label {
+    background-color: rgb(255, 255, 255);
+}  
+
+/* 레이아웃 외곽 너비 400px 제한*/
+
+.reviewform textarea{
+    width: 700px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.rating .rate_radio {
+    position: relative;
+    display: inline-block;
+    z-index: 20;
+    opacity: 0.001;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: top;
+    display: none;
+}
+.rating .rate_radio + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    background-image: url('../../images/starrate/starrate.png');
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    cursor: pointer;
+    background-color: #ccc;
+}
+.rating .rate_radio:checked + label {
+    background-color: rgb(238, 211, 61);
+}
+
+.warning_msg {
+    display: none;
+    position: relative;
+    text-align: center;
+    background: #ffffff;
+    line-height: 26px;
+    width: 700px;
+    color: red;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+}

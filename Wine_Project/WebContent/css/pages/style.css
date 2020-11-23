@@ -28,7 +28,9 @@ Tags:white,light,one-column,two-columns,left-sidebar,right-sidebar,fluid-layout,
 	font-style: normal;
 }
 /*--------------------------------------------------------------1.0 - Reset--------------------------------------------------------------*/
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,del,dfn,em,font,ins,kbd,q,s,samp,small,
+strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
 	border:0;
 	font-family:inherit;
 	font-size:100%;
@@ -39,6 +41,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	padding:0;
 	vertical-align: baseline;
 }
+/* 이상한 점 */
+::marker{
+	display: block;
+	color:white;
+}
+
+
+
 html {
 	font-size:62.5%;
 	/* Corrects text resizing oddly in IE6/7 when body font-size is set using em units http://clagnut.com/blog/348/#c790 */
@@ -262,6 +272,8 @@ img {
 	max-width:100%;
 	/* Adhere to container width. */
 }
+
+
 ul,ol {
 	margin:0 0 1.5em 3em;
 }
@@ -285,6 +297,8 @@ dd {
 figure {
 	margin:0;
 }
+
+/* 테이블 */
 table {
 	border-collapse:collapse;
 	border-spacing:0;
@@ -296,15 +310,17 @@ table {
 }
 table th {
 	font-weight:bold;
-	padding:10px 10px 10px 0;
+	padding:10px 10px 10px 10px;
 	text-align:left;
+	border-bottom: 1px solid #ccc;
 }
 table td {
-	padding:10px 10px 10px 0;
+	padding:10px 10px 10px 10px;
 }
+
 table tr {
-	border-top:1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-top:1px solid rgb(255, 255, 255);
+	border-bottom: 1px solid rgb(255, 255, 255);
 }
 /*--------------------------------------------------------------5.0 Forms--------------------------------------------------------------*/
 button,input,select,textarea {
@@ -419,9 +435,7 @@ textarea {
 	transition: all 0.2s ease-in-out;
 }
 /*--------------------------------------------------------------6.0 Header--------------------------------------------------------------*/
-html {
-	border:12px solid #111;
-}
+
 .site-header {
 	padding-top:2em;
 	padding-bottom:1em;
@@ -500,7 +514,7 @@ a:active,a:focus {
 }
 .main-navigation ul {
 	list-style:none;
-	margin:0 auto;
+	margin-left:275px;
 	padding:3px 0;
 }
 .main-navigation li {
@@ -516,6 +530,8 @@ a:active,a:focus {
 	opacity:0.9;
 	float:left;
 	left:-1em;
+	width: 80px;
+	margin: auto;
 	padding:0.5em 1em;
 	position:absolute;
 	top:1.5em;
@@ -528,6 +544,7 @@ a:active,a:focus {
 .main-navigation ul ul li {
 	margin:0;
 	width:150px;
+	padding-left:5px;
 }
 .main-navigation ul li:hover>ul {
 	display: block;
@@ -619,7 +636,8 @@ a:active,a:focus {
 	margin: 0 auto;
 }
 /*--------------------------------------------------------------9.0 Clearings--------------------------------------------------------------*/
-.clear:before,.clear:after,.entry-content:before,.entry-content:after,.comment-content:before,.comment-content:after,.site-header:before,.site-header:after,.site-content:before,.site-content:after,.site-footer:before,.site-footer:after {
+.clear:before,.clear:after,.entry-content:before,.entry-content:after,.comment-content:before,.comment-content:after,.site-header:before,.site-header:after,.site-content:before,.site-content:after,
+.site-footer:before,.site-footer:after {
 	content:'';
 	display:table;
 }
@@ -668,7 +686,7 @@ a:active,a:focus {
 	display:none;
 }
 .widget_search input[type="search"] {
-	width: 100%;
+	width: 70%;
 }
 .widget_recent_comments ul li:before, .widget_categories ul li:before, .widget_archive ul li:before, .widget_links ul li:before, .widget_meta ul li:before, .widget_pages ul li:before, .widget_recent_entries ul li:before {
 	content: "\f105";
@@ -679,12 +697,11 @@ a:active,a:focus {
 /*--------------------------------------------------------------11.0 Site Content--------------------------------------------------------------*/
 #primary,#secondary {
 	padding-top: 2em;
+	width: 100%;
 }
 /*--------------------------------------------------------------11.1 Posts and pages--------------------------------------------------------------*/
-.sticky {
-}
-.bypostauthor {
-}
+
+
 .hentry {
 	margin: 0 0 3.5em;
 }
@@ -915,6 +932,7 @@ a.smoothup {
 /*--------------------------------------------------------------12.0 Footer--------------------------------------------------------------*/
 .site-footer {
 	padding:2em 0;
+	
 	text-align:center;
 	background-color:#333;
 	color:#999;
@@ -2114,9 +2132,10 @@ a.portfoliotype:last-child:after {
 .woocommerce #coupon_code {
 	min-width:150px;
 }
+/* 관심상품 버튼 */
 .woocommerce div.product form.cart .button {
 	vertical-align:middle;
-	float:left;
+	float: right;
 	text-transform:uppercase;
 	letter-spacing:1px;
 	font-size:11px;
@@ -2212,7 +2231,7 @@ h6 { font-size: 12px; }
 .entry-title {
 	font-size: 20px;
 	font-style: normal;
-	font-weight: 300;
+	font-weight: 700;
 	letter-spacing: 1px;
 	text-align: left;
 	text-transform: uppercase;
@@ -2292,24 +2311,18 @@ h1, h2, h3, h4, h5, h6 {
     transition: border linear 0.2s,box-shadow linear 0.2s;
 }
 .searchBtn {
+	
 	height: 25px;
 	width: 20px;
 	margin-bottom: 0px;
 	background-image: url(images/magnifying-glass.png);
 
 }
+
 .searchBtn:hover {
 	
 	background:#340550;
 	color:#fff;
-}
-
-/*****  search ******/
-.search{
-	margin-top : 10px;
-	position: static;
-	width : 100%;
-	align-items: center;
 }
 
 /************* range  **************/
@@ -2317,7 +2330,7 @@ h1, h2, h3, h4, h5, h6 {
 .range {
     display: flex;
     position: static;
-    width : 100%;
+    width : 50%;
     height: 10px;
     margin-left : 0%;
     margin-top: 10px;
@@ -2379,18 +2392,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .range output {
     display: table-cell;
-    padding: 2px 2px 2px;
+    padding: 3px 5px 2px;
     min-width: 10px;
     color: rgb(255, 255, 255);
     background-color: rgb(153, 153, 153);
    text-align: center;
-   font-size : 3px;
+   font-size : 10px;
     text-decoration: none;
-    border-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-   width: 20px;
-   height: 15px;
+    border-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+   width: 10%;
+   height: 20px;
     white-space: nowrap;
     vertical-align: middle;
 
@@ -2410,124 +2423,68 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
 }
 
-.range.range-dangdo input[type="range"]::-webkit-slider-thumb {
+.range.range-primary input[type="range"]::-webkit-slider-thumb {
     background-color: rgb(66, 139, 202);
 }
-.range.range-dangdo input[type="range"]::-moz-slider-thumb {
+.range.range-primary input[type="range"]::-moz-slider-thumb {
     background-color: rgb(66, 139, 202);
 }
-.range.range-dangdo output {
+.range.range-primary output {
     background-color: rgb(66, 139, 202);
 }
-.range.range-dangdo input[type="range"] {
+.range.range-primary input[type="range"] {
     outline-color: rgb(66, 139, 202);
 }
 
-.range.range-sando input[type="range"]::-webkit-slider-thumb {
+.range.range-success input[type="range"]::-webkit-slider-thumb {
     background-color: rgb(92, 184, 92);
 }
-.range.range-sando input[type="range"]::-moz-slider-thumb {
+.range.range-success input[type="range"]::-moz-slider-thumb {
     background-color: rgb(92, 184, 92);
 }
-.range.range-sando output {
+.range.range-success output {
     background-color: rgb(92, 184, 92);
 }
-.range.range-sando input[type="range"] {
+.range.range-success input[type="range"] {
     outline-color: rgb(92, 184, 92);
 }
 
-.range.range-body input[type="range"]::-webkit-slider-thumb {
+.range.range-info input[type="range"]::-webkit-slider-thumb {
     background-color: rgb(91, 192, 222);
 }
-.range.range-body input[type="range"]::-moz-slider-thumb {
+.range.range-info input[type="range"]::-moz-slider-thumb {
     background-color: rgb(91, 192, 222);
 }
-.range.range-body output {
+.range.range-info output {
     background-color: rgb(91, 192, 222);
 }
-.range.range-body input[type="range"] {
+.range.range-info input[type="range"] {
     outline-color: rgb(91, 192, 222);
 }
 
-.range.range-tanin input[type="range"]::-webkit-slider-thumb {
+.range.range-warning input[type="range"]::-webkit-slider-thumb {
+    background-color: rgb(240, 173, 78);
+}
+.range.range-warning input[type="range"]::-moz-slider-thumb {
+    background-color: rgb(240, 173, 78);
+}
+.range.range-warning output {
+    background-color: rgb(240, 173, 78);
+}
+.range.range-warning input[type="range"] {
+    outline-color: rgb(240, 173, 78);
+}
+
+.range.range-danger input[type="range"]::-webkit-slider-thumb {
     background-color: rgb(217, 83, 79);
 }
-.range.range-tanin input[type="range"]::-moz-slider-thumb {
+.range.range-danger input[type="range"]::-moz-slider-thumb {
     background-color: rgb(217, 83, 79);
 }
-.range.range-tanin output {
+.range.range-danger output {
     background-color: rgb(217, 83, 79);
 }
-.range.range-tanin input[type="range"] {
+.range.range-danger input[type="range"] {
     outline-color: rgb(217, 83, 79);
 }
 
-/*  shop_detail */
-.shop_detail_head{
-	border-bottom: 1px solid #dbdbdb;
-}
-
-.shop_detail_tag{
-	border-bottom: 1px solid #dbdbdb;
-
-}
-.shop_detail_name{
-	border-right : 2px solid #dbdbdb;
-}
-
-.shop_detail_cont{
-	padding-left : 10%;
-	min-height: 40px;
-	font-weight: bold;
-}
-
-/*********  image hover *********/
-.container2 {
-	display: flex;
-	width: 100%;
-	padding: 4% 2%;
-	box-sizing: border-box;
-	height: 100vh;
-  }
-  
-  .box {
-	flex: 1;
-	overflow: hidden;
-	transition: .5s;
-	margin: 0 2%;
-	box-shadow: 0 20px 30px rgba(0,0,0,.1);
-	line-height: 0;
-  }
-  
-  .box > img {
-	width: 200%;
-	height: calc(100% - 10vh);
-	object-fit: cover; 
-	transition: .5s;
-  }
-  
-  .box > span {
-	font-size: 3.8vh;
-	display: block;
-	text-align: center;
-	height: 10vh;
-	line-height: 2.6;
-  }
-  
-  .box:hover { 
-	  flex: 1 1 50%; 
-	}
-
-  .box:hover > img {
-	width: 100%;
-	height: 100%;
-  }
-   
-/* main 우측 태그 : 오늘의 상품 */
-  .container3 {
-	display: flex;
-	width: 400px;
-	padding: 4% 2%;
-	box-sizing: border-box;
-	height: 100vh;
-  }

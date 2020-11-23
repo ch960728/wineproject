@@ -51,7 +51,7 @@ public class CommService extends HttpServlet {
 				int cnt = dao.CWrite(title, id, content, file);
 		        if (cnt > 0) {
 					
-					response.sendRedirect("Commshow.jsp");
+					response.sendRedirect("board.jsp?");
 				}
 		    } catch (Exception e) {
 		        e.printStackTrace();

@@ -22,7 +22,8 @@
 	int wine_id = Integer.parseInt(request.getParameter("wine_id"));
 	System.out.println(wine_id);
 	String id = (String)session.getAttribute("id");
-	System.out.print("접속한 id"+id);
+	String u_id =(String)session.getAttribute("u_id");
+	
 %>
 
 <div id="page">
@@ -177,6 +178,7 @@
 															</select>
 						    			<textarea name = "rw_text" rows = "4" cols = "60" width="1000px"></textarea>
 						    			<input type="hidden" name="id" value=<%=id %>>
+						    			<input type="hidden" name="u_id" value=<%=u_id %>>
 						    			<input type="hidden" name="wine_id" value=<%=wine_id %>><!-- 게시글 번호도 보내 줘야 함 -->
 						    			<button class="submit">댓글 등록</button>
 										</form>

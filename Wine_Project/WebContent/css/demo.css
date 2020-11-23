@@ -225,9 +225,9 @@ a:hover, a:focus {
 .content:not(:first-child) {
 	padding: 4em 0;
 }
-
+/* index 배경 색깔 */
 .content--c2 {
-	background: #330757;
+	background: #22053a;
 }
 
 .content--c3 {

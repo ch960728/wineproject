@@ -126,6 +126,7 @@
 						</div>
 					</div>
 					<!-- 게시판 끝 -->
+				<a href="InputComm.jsp">게시판 글작성으로 이동</a>
 				</div> 
 				<!-- .entry-content -->
 				<footer class="entry-footer">

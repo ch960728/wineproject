@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.vo.WineVo"%>
 <%@page import="com.dao.WineDAO"%>
+<%@page import="com.vo.WineVo"%>
+<%@page import="com.dao.WineDAO"%>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html>
-<html>
+<html lang="UTF-8"">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moschino | Minimalist Free HTML Portfolio by WowThemes.net</title>
+<title>Dionysus | 너 때문에 술이 깨져버렸으니 책임져</title>
 <link rel='stylesheet' href='css/bootstrap/woocommerce-layout.css' type='text/css' media='all'/>
 <link rel='stylesheet' href='css/bootstrap/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
 <link rel='stylesheet' href='css/bootstrap/woocommerce.css' type='text/css' media='all'/>
@@ -15,42 +17,19 @@
 <link rel='stylesheet' href='css/pages/style.css' type='text/css' media='all'/>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500,700%7CHerr+Von+Muellerhoff:400,500,700%7CQuattrocento+Sans:400,500,700' type='text/css' media='all'/>
 <link rel='stylesheet' href='css/bootstrap/easy-responsive-shortcodes.css' type='text/css' media='all'/>
-</head>
+</head>	
 <body class="archive post-type-archive post-type-archive-product woocommerce woocommerce-page">
-
 <%
+	//사용자 seesion----------------------------------------------------
 	String id = (String)session.getAttribute("id");
-	System.out.print("접속한 id"+id);
+	String u_id =(String)session.getAttribute("u_id");
+	//사용자 seesion----------------------------------------------------
 %>
 
 <div id="page">
 	<div class="container">
-		<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="main.html" rel="home">Moschino</a></h1>
-			<h2 class="site-description">Minimalist Portfolio HTML Template</h2>
-		</div>
-		<nav id="site-navigation" class="main-navigation">
-		<button class="menu-toggle">Menu</button>
-		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-		<div class="menu-menu-1-container">
-			<ul id="menu-menu-1" class="menu">
-				<li><a href="main.html">메인페이지</a></li>
-				<li><a href="dic.html">와인 백과사전</a></li>
-				<li><a href="shop.html">검색하기</a></li>
-				
-				<li><a href="#">커뮤니티</a>
-				<ul class="sub-menu">
-					
-					<li><a href="board.html">게시판</a></li>
-					<li><a href="qna.html">Q&A</a></li>
-					
-				</ul>
-				</li>
-				<li><a href="contact.html">설문조사</a></li>
-			</ul>
-		</div>
-		</nav>
+
+	<%@include file ="header.jsp" %>
 				<!-----  검색 search창 ------>
 		<nav id="site-navigation" class="main-navigation">
 			<!-- dropbar +,- 드롭바  -->
@@ -135,44 +114,83 @@
 						<option value="price-desc">Sort by price: high to low</option>
 					</select>
 				</form>
+				<ul class="products">
 				
-						<%
-                  try {
-         	         WineDAO dao = new WineDAO();
-         	         ArrayList<WineVo> arr= dao.WineList();
-         	         %>
-         	         <ul class="products">
-         	         <%
-					for(int i=0; i<20; i++){
-                        System.out.println(arr.get(i).getW_name());
-                        System.out.println(arr.get(i).getKinds());
-                        System.out.println(arr.get(i).getPrice());
-                        System.out.println(arr.get(i).getImg());
-				%>
-					
-					<li class="product">
+					<li class="first product">
 					<a href="shop_detail.html">
+					<span class="onsale">hit!</span>
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/j4-520x520.jpg" alt="">
+						<!-- 사진 -->
               		 <div>
-               		<a href='shop_detail.jsp?wine_id=<%=arr.get(i).getWine_id()%>'><img class="aa" src="upload/<%= arr.get(i).getImg()%>"/></a>
+               		<a href="shop_detail.html"><img class="aa" src="images/shop/2wine.jpg" alt=""></a>
                		</div>
               			 <!-- 와인명 -->
-					<h3><%=arr.get(i).getW_name() %></h3>
+					<h3>와인 이름</h3>
 					<!-- 와인 종류  -->
-					<span class="#"><span class="amount"><%=arr.get(i).getKinds() %></span></span>
+					<span class="#"><span class="amount">분류(레드,화이트,로제,스파클링)</span></span>
 						<!-- 와인가격  -->
-					<span class="price"><span class="amount"><%=arr.get(i).getPrice() %></span></span>
+					<span class="price"><span class="amount">가격(000,000원)</span></span>
 						<!--  버튼-->
 					</a><a href="shop_detail.html" class="button">상세정보</a>
 					</li>
-				
-				<%
-					}
-         	       } catch (Exception e) {
-         	         // TODO Auto-generated catch block
-         	         e.printStackTrace();
-         	      }
-                 %> 
-                 </ul>
+
+					<li class="product">
+					<a href="shop_detail.html">
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/j10-520x780-520x600.jpg" alt="">
+					<h3>Beige Blouse</h3>
+					<span class="price"><span class="amount">$66.00</span></span>
+					</a><a href="#" class="button">Add to cart</a>
+					</li>
+					
+					<li class="product">
+					<a href="shop_detail.html">
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/j1-520x780-520x600.jpg" alt="">
+					<h3>Black Jacket</h3>
+					<span class="price"><span class="amount">$125.00</span></span>
+					</a><a href="#" class="button">Add to cart</a>
+					</li>
+					
+					<li class="last product">
+					<a href="shop_detail.html">
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/j9-520x780-520x600.jpg" alt="">
+					<h3>Brown Jacket</h3>
+					<span class="price"><span class="amount">$28.00</span></span>
+					</a><a href="#" class="button">Add to cart</a>
+					</li>
+					
+					<li class="first product">
+					<a href="shop_detail.html">
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/j12-520x668-520x600.jpg" alt="">
+					<h3>Gray Blouse</h3>
+					<span class="price"><span class="amount">$15.00</span></span>
+					</a><a href="#" class="button">Add to cart</a>
+					</li>
+					
+					<li class="product">
+					<a href="shop_detail.html">
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/f11-520x755-520x600.jpg" alt="">
+					<h3>Male Bag</h3>
+					<span class="price"><span class="amount">$16.00</span></span>
+					</a><a href="#" class="button">Add to cart</a>
+					</li>
+					
+					<li class="product">
+					<a href="shop_detail.html">
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/j6-520x779-520x600.jpg" alt="">
+					<h3>Hugo Jeans</h3>
+					<span class="price"><span class="amount">$36.00</span></span>
+					</a><a href="#" class="button">Add to cart</a>
+					</li>
+					
+					<li class="last product">
+					<a href="shop_detail.html">
+					<img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/10175658/j2-520x780-520x600.jpg" alt="">
+					<h3>Male T-Shirt</h3>
+					<span class="price"><span class="amount">$49.00</span></span>
+					</a><a href="#" class="button">Add to cart</a>
+					</li>
+					
+				</ul>
 				<nav class="woocommerce-pagination">
 				<ul class="page-numbers">
 					<li><span class="page-numbers current">1</span></li>
@@ -191,7 +209,7 @@
 	<footer id="colophon" class="site-footer">
 	<div class="container">
 		<div class="site-info">
-			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Moschino</h1>
+			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Dionysus</h1>
 			Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
 
 		</div>
